@@ -201,7 +201,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 3103559154099317421}
-    m_Position: {x: 350, y: 280, z: 0}
+    m_Position: {x: 350, y: 290, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2234114079997100430}
     m_Position: {x: 350, y: 350, z: 0}
@@ -410,7 +410,7 @@ BlendTree:
   m_BlendParameter: Speed
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 1
+  m_MaxThreshold: 10
   m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
