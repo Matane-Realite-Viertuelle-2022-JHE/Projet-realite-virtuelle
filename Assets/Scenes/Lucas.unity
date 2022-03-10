@@ -362,7 +362,7 @@ MonoBehaviour:
   walkPointRange: 5
   attacksDelta: 0.5
   sightRange: 20
-  attackRange: 2
+  attackRange: 1
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &650421106

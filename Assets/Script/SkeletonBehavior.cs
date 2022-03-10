@@ -22,17 +22,21 @@ public class SkeletonBehavior : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
+    private bool isDead;
 
     private void Awake()
     {
         playerHead = GameManager.instance.PlayerHead;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        alreadyAttacked = false;
     }
     private void Update()
     {
+        if (isDead) return;
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        Debug.Log();
 
         ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
@@ -47,15 +51,15 @@ public class SkeletonBehavior : MonoBehaviour
 
     private void AttackPlayer ()
     {
-        agent.SetDestination(playerHead.position);
 
         transform.LookAt(playerHead);
 
         if (!alreadyAttacked)
         {
             //Attack code
-            animator.Play("Strike_1");
+            animator.SetTrigger("Attack");
             alreadyAttacked = true;
+
             Invoke(nameof(ResetAttack), attacksDelta);
         }
     }
@@ -63,17 +67,18 @@ public class SkeletonBehavior : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-
-        if (skeletonHealth <= 0)
-        {
-            animator.Play("Death_1");
-            Invoke(nameof(DestroySkeleton), 1f);
-        }
+        
     }
 
     public void TakeDamage(int dmg)
     {
         skeletonHealth -= dmg;
+        if (skeletonHealth <= 0)
+        {
+            animator.SetBool("IsDead",true);
+            Invoke(nameof(DestroySkeleton), 1f);
+            isDead = true;
+        }
     }
 
     private void DestroySkeleton()
