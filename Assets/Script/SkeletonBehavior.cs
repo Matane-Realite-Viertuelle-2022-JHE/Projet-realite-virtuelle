@@ -6,14 +6,13 @@ using UnityEngine.AI;
 public class SkeletonBehavior : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public Animator animator;
-    public Transform playerHead;
+    private Animator animator;
+    private Transform playerHead;
     public int skeletonHealth = 100;
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsPlayer;
 
-    //Patrolling
+    //Walking
     public Vector3 walkPoint;
-    bool walkPointSet;
     public float walkPointRange;
 
     //Attacking
@@ -35,31 +34,20 @@ public class SkeletonBehavior : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
-    private void SearchWalkPoint()
-    {
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-        {
-            walkPointSet = true;
-        }
-    }
-
-
+  
     private void ChasePlayer()
     {
         agent.SetDestination(playerHead.position);
+        animator.SetFloat("Speed",0.5f);
+        //Debug.Log(agent.destination);
     }
 
     private void AttackPlayer ()
     {
-        agent.SetDestination(transform.position);
+        agent.SetDestination(playerHead.position);
 
         transform.LookAt(playerHead);
 
