@@ -17,7 +17,7 @@ public class SkeletonBehavior : MonoBehaviour
 
     //Attacking
     public float attacksDelta;
-    bool alreadyAttacked;
+    public bool alreadyAttacked;
 
     //States
     public float sightRange, attackRange;
@@ -36,7 +36,6 @@ public class SkeletonBehavior : MonoBehaviour
         if (isDead) return;
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
-        Debug.Log();
 
         ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
