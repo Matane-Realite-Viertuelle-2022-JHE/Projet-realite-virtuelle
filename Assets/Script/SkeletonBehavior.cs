@@ -23,12 +23,15 @@ public class SkeletonBehavior : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     private bool isDead;
+    public delegate void EnemyKilled();
+    public static event EnemyKilled OnEnemyKilled;
 
     private void Awake()
     {
         playerHead = GameManager.instance.PlayerHead;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        animator.SetFloat("Speed", 0.5f);
         alreadyAttacked = false;
     }
     private void Update()
@@ -37,14 +40,16 @@ public class SkeletonBehavior : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        ChasePlayer();
+        if (Vector3.Distance(transform.position, playerHead.position) > 0.5f)
+        {
+            ChasePlayer();
+        }
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
   
     private void ChasePlayer()
     {
         agent.SetDestination(playerHead.position);
-        animator.SetFloat("Speed",0.5f);
         //Debug.Log(agent.destination);
     }
 
@@ -57,6 +62,7 @@ public class SkeletonBehavior : MonoBehaviour
         {
             //Attack code
             animator.SetTrigger("Attack");
+            animator.SetBool("AlreadyAttacked", true);
             alreadyAttacked = true;
 
             Invoke(nameof(ResetAttack), attacksDelta);
@@ -66,6 +72,7 @@ public class SkeletonBehavior : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
+        animator.SetBool("AlreadyAttacked", false);
         
     }
 
@@ -77,6 +84,11 @@ public class SkeletonBehavior : MonoBehaviour
             animator.SetBool("IsDead",true);
             Invoke(nameof(DestroySkeleton), 1f);
             isDead = true;
+
+            if (OnEnemyKilled != null)
+            {
+                OnEnemyKilled();
+            }
         }
     }
 
