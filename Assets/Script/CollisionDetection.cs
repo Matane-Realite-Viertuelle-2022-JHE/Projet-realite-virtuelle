@@ -7,6 +7,25 @@ public class CollisionDetection : MonoBehaviour
 {
     XRGrabInteractable xrGrab;
 
+    private void Awake()
+    {
+        gameObject.GetComponent<BoxCollider>().isTrigger = false;
+        xrGrab = GetComponent<XRGrabInteractable>();
+
+    }
+
+    private void Update()
+    {
+        if (xrGrab.isSelected)
+        {
+            GetComponent<BoxCollider>().isTrigger = true;
+        }
+        else
+        {
+            GetComponent<BoxCollider>().isTrigger = false;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
