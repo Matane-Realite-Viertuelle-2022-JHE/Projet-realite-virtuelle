@@ -13,6 +13,6 @@ public class GameManager : MonoBehaviour
 
     public void Awake() {
         instance = this;
-        xROrigin.MatchOriginUp(startPos.position);
+        xROrigin.MoveCameraToWorldLocation(startPos.position);
     }
 }
