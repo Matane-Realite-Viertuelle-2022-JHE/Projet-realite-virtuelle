@@ -40,23 +40,24 @@ public class SkeletonBehavior : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (Vector3.Distance(transform.position, playerHead.position) > 0.5f)
+       if (playerInSightRange)
         {
             ChasePlayer();
         }
+
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
   
     private void ChasePlayer()
     {
         agent.SetDestination(playerHead.position);
+        agent.isStopped = false;
         //Debug.Log(agent.destination);
     }
 
     private void AttackPlayer ()
     {
 
-        transform.LookAt(playerHead);
 
         if (!alreadyAttacked)
         {

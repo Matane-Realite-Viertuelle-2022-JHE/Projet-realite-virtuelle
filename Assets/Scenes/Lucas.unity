@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 500053140}
   - component: {fileID: 500053139}
   - component: {fileID: 500053138}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Sol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2701,9 +2701,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9070805287994194443, guid: 0764c21b8d4ff714a8d8e1156084cabf, type: 3}
-      propertyPath: attackRange
-      value: 0.01
+    - target: {fileID: 9070805287994194444, guid: 0764c21b8d4ff714a8d8e1156084cabf, type: 3}
+      propertyPath: m_Constraints
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0764c21b8d4ff714a8d8e1156084cabf, type: 3}

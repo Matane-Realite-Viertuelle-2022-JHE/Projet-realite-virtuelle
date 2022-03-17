@@ -111,7 +111,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903993859949671320}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.8, y: 1.5, z: 0.4}
@@ -138,7 +138,7 @@ MonoBehaviour:
   attacksDelta: 1
   alreadyAttacked: 0
   sightRange: 20
-  attackRange: 0.5
+  attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!195 &9070805287994194440
@@ -894,7 +894,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7012239044510886163}
   - component: {fileID: 5687642785607477906}
-  - component: {fileID: 5400737125219454772}
   m_Layer: 5
   m_Name: LowPolySkeleton
   m_TagString: Untagged
@@ -997,20 +996,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0874899, y: 0.0020963252, z: 0.040288918}
     m_Extent: {x: 0.6084763, y: 0.67021155, z: 0.10944065}
   m_DirtyAABB: 0
---- !u!136 &5400737125219454772
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5400737125219454774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.18
-  m_Height: 1.25
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5400737125219454775
 GameObject:
   m_ObjectHideFlags: 0
