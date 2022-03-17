@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9070805287994194440}
-  skeletonHealth: 100
+  skeletonHealth: 200
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -137,7 +137,7 @@ MonoBehaviour:
   walkPointRange: 5
   attacksDelta: 1
   alreadyAttacked: 0
-  sightRange: 20
+  sightRange: 200
   attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
