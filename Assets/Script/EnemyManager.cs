@@ -19,7 +19,7 @@ public class EnemyManager : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(Enemy, SpawnPoints[0].transform.position, Quaternion.identity);
+        Instantiate(Enemy, SpawnPoints[Random.Range(0,SpawnPoints.Length)].transform.position, Quaternion.identity);
     }
 
     private void OnEnable()
