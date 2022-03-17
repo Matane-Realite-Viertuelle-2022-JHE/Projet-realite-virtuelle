@@ -34,7 +34,10 @@ public class CollisionDetection : MonoBehaviour
             xrGrab = GetComponent<XRGrabInteractable>();
             Debug.Log(xrGrab.isSelected);
             Debug.Log(other.name);
-            other.GetComponent<SkeletonBehavior>().TakeDamage(100);
+            if (!other.GetComponent<SkeletonBehavior>().isDead)
+            {
+                other.GetComponent<SkeletonBehavior>().TakeDamage(100);
+            }
         }
     }
 }

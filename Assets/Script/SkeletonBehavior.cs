@@ -22,7 +22,8 @@ public class SkeletonBehavior : MonoBehaviour
     //States
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
-    private bool isDead;
+    [HideInInspector]
+    public bool isDead;
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
 
