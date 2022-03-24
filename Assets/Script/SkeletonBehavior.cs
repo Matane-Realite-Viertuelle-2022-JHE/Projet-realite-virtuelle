@@ -65,8 +65,9 @@ public class SkeletonBehavior : MonoBehaviour
         if (!alreadyAttacked)
         {
             //Attack code
+            animator.SetFloat("Random", Random.value);
             animator.SetTrigger("Attack");
-            animator.SetBool("AlreadyAttacked", true);
+
             alreadyAttacked = true;
 
             Invoke(nameof(ResetAttack), attacksDelta);
@@ -76,8 +77,6 @@ public class SkeletonBehavior : MonoBehaviour
     private void ResetAttack()
     {
         alreadyAttacked = false;
-        animator.SetBool("AlreadyAttacked", false);
-        
     }
 
     public void TakeDamage(int dmg)
