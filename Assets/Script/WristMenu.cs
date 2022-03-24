@@ -23,7 +23,7 @@ public class WristMenu : MonoBehaviour
 	public void changeEtat() {
 		play = !play;
 		if (play) {
-			Console.Log("play");
+			Debug.Log("play");
 		} 
 		
 	}
@@ -44,3 +44,4 @@ public class WristMenu : MonoBehaviour
 		}
     }
 }
+ 
