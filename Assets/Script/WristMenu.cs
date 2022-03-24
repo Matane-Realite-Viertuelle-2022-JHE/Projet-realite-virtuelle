@@ -7,11 +7,12 @@ public class WristMenu : MonoBehaviour
 {
 	public GameObject wristUI;
 	public bool activeWriteUI = true;
+	public bool play = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        DisplayWriteUI();
+        // DisplayWriteUI();
     }
 
 	public void exitGame() {
@@ -19,12 +20,17 @@ public class WristMenu : MonoBehaviour
 		Debug.Log("Application quitté");
 	}
 
-	public void play() {
-		Debug.Log("Play");
+	public void changeEtat() {
+		play = !play;
+		if (play) {
+			Console.Log("play");
+		} 
+		
 	}
 
 	public void MenuPressed(InputAction.CallbackContext context) {
-		if(context.performed) DisplayWriteUI();
+		//if(context.performed) DisplayWriteUI();
+		Debug.Log("test");
 	}
 
     public void DisplayWriteUI()
