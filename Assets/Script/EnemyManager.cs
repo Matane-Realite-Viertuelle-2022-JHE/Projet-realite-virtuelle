@@ -7,7 +7,6 @@ public class EnemyManager : MonoBehaviour
 
     public Transform[] SpawnPoints;
     public GameObject Enemy;
-        
 
     // Start is called before the first frame update
     void Start()

@@ -141,6 +141,8 @@ MonoBehaviour:
   attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
+  isDead: 0
+  damageText: {fileID: 7474797606383587199, guid: 02370fa264017ed499e2233e9f33ae53, type: 3}
 --- !u!195 &9070805287994194440
 NavMeshAgent:
   m_ObjectHideFlags: 0

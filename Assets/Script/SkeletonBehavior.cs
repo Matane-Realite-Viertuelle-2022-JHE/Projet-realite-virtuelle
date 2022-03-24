@@ -26,6 +26,8 @@ public class SkeletonBehavior : MonoBehaviour
     public bool isDead;
     public delegate void EnemyKilled();
     public static event EnemyKilled OnEnemyKilled;
+    public GameObject damageText;
+
 
     private void Awake()
     {
@@ -81,6 +83,8 @@ public class SkeletonBehavior : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         skeletonHealth -= dmg;
+        DmgPop dmgPop = Instantiate(damageText, transform.position, Quaternion.identity).GetComponent<DmgPop>();
+        dmgPop.SetDamageText(dmg);
         if (skeletonHealth <= 0)
         {
             animator.SetBool("IsDead",true);
