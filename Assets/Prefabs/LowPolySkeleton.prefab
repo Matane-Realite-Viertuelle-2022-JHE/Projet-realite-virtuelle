@@ -135,7 +135,7 @@ MonoBehaviour:
     m_Bits: 8
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  attacksDelta: 1
+  attacksDelta: 2
   alreadyAttacked: 0
   sightRange: 200
   attackRange: 3
