@@ -31,7 +31,6 @@ public class SkeletonBehavior : MonoBehaviour
 
     private void Awake()
     {
-        playerHead = GameManager.instance.PlayerHead;
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         animator.SetFloat("Speed", 0.5f);
@@ -39,6 +38,7 @@ public class SkeletonBehavior : MonoBehaviour
     }
     private void Update()
     {
+        playerHead = GameManager.instance.PlayerHead;
         Debug.Log(playerHead.position);
         if (isDead) return;
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
