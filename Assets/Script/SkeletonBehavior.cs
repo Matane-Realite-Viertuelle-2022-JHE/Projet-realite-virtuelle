@@ -88,6 +88,7 @@ public class SkeletonBehavior : MonoBehaviour
         if (skeletonHealth <= 0)
         {
             animator.SetBool("IsDead",true);
+            animator.Play("Dead_1");
             Invoke(nameof(DestroySkeleton), 1f);
             isDead = true;
 
