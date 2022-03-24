@@ -39,6 +39,7 @@ public class SkeletonBehavior : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(playerHead.position);
         if (isDead) return;
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
