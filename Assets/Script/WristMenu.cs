@@ -44,6 +44,7 @@ public class WristMenu : MonoBehaviour
 		}
 
 		bool pressed;
+
 		leftController.TryGetFeatureValue(CommonUsages.primaryButton, out pressed);
 
 
