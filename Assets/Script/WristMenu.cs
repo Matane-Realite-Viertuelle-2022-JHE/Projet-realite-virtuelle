@@ -4,32 +4,36 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using InputDevice = UnityEngine.XR.InputDevice;
 
 public class WristMenu : MonoBehaviour
 {
 	public GameObject wristUI;
 	public bool activeWriteUI = true;
 	public bool play = true;
-	public XRController leftController;
-	public InputHelpers.Button button;
+	private InputDevice leftController;
+	private InputHelpers.Button button;
 
     // Start is called before the first frame update
     void Start()
     {
-		List<UnityEngine.XR.InputDevice> inputDevices = new List<UnityEngine.XR.InputDevice>();
+		List<InputDevice> inputDevices = new List<InputDevice>();
 
-		InputDevices.GetDevices(inputDevices);
+		InputDeviceCharacteristics inputDeviceCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+
+		InputDevices.GetDevicesWithCharacteristics(inputDeviceCharacteristics, inputDevices);
 		foreach(var item in inputDevices)
         {
 			Debug.Log(item.characteristics);
         }
+		if (inputDevices.Count > 0) leftController = inputDevices[0];
         // DisplayWriteUI();
     }
 
     private void Update()
     {
 		bool pressed;
-		leftController.inputDevice.IsPressed(button,out pressed);
+		leftController.IsPressed(button,out pressed);
 
 		if (pressed) Debug.Log("Pressed " + button);
     }
