@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using CommonUsages = UnityEngine.XR.CommonUsages;
 using InputDevice = UnityEngine.XR.InputDevice;
 
 public class WristMenu : MonoBehaviour
@@ -19,12 +20,12 @@ public class WristMenu : MonoBehaviour
     {
 		List<InputDevice> inputDevices = new List<InputDevice>();
 
-		InputDeviceCharacteristics inputDeviceCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+		InputDeviceCharacteristics inputDeviceCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
 
 		InputDevices.GetDevicesWithCharacteristics(inputDeviceCharacteristics, inputDevices);
 		foreach(var item in inputDevices)
         {
-			Debug.Log(item.characteristics);
+			Debug.Log(item.ToString());
         }
 		if (inputDevices.Count > 0) leftController = inputDevices[0];
         // DisplayWriteUI();
@@ -32,8 +33,19 @@ public class WristMenu : MonoBehaviour
 
     private void Update()
     {
+		List<InputDevice> inputDevices = new List<InputDevice>();
+
+		InputDeviceCharacteristics inputDeviceCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+
+		InputDevices.GetDevicesWithCharacteristics(inputDeviceCharacteristics, inputDevices);
+		foreach (var item in inputDevices)
+		{
+			Debug.Log(item.name.ToString() + item.characteristics.ToString());
+		}
+
 		bool pressed;
-		leftController.IsPressed(button,out pressed);
+		leftController.TryGetFeatureValue(CommonUsages.primaryButton, out pressed);
+
 
 		if (pressed) Debug.Log("Pressed " + button);
     }
