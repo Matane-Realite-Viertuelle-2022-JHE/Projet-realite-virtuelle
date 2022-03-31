@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using CommonUsages = UnityEngine.XR.CommonUsages;
 using InputDevice = UnityEngine.XR.InputDevice;
 
 public class WristMenu : MonoBehaviour
@@ -33,7 +34,7 @@ public class WristMenu : MonoBehaviour
     private void Update()
     {
 		bool pressed;
-		leftController.IsPressed(button,out pressed);
+		leftController.TryGetFeatureValue(CommonUsages.primaryButton,out pressed);
 
 		if (pressed) Debug.Log("Pressed " + button);
     }
