@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class WristMenu : MonoBehaviour
@@ -15,6 +16,13 @@ public class WristMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		List<UnityEngine.XR.InputDevice> inputDevices = new List<UnityEngine.XR.InputDevice>();
+
+		InputDevices.GetDevices(inputDevices);
+		foreach(var item in inputDevices)
+        {
+			Debug.Log(item.characteristics);
+        }
         // DisplayWriteUI();
     }
 
