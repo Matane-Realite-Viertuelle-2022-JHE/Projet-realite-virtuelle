@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class WristMenu : MonoBehaviour
 {
 	public GameObject wristUI;
 	public bool activeWriteUI = true;
 	public bool play = true;
+	public XRController leftController;
+	public InputHelpers.Button button;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +18,15 @@ public class WristMenu : MonoBehaviour
         // DisplayWriteUI();
     }
 
-	public void exitGame() {
+    private void Update()
+    {
+		bool pressed;
+		leftController.inputDevice.IsPressed(button,out pressed);
+
+		if (pressed) Debug.Log("Pressed " + button);
+    }
+
+    public void exitGame() {
 		Application.Quit();
 		Debug.Log("Application quitté");
 	}
